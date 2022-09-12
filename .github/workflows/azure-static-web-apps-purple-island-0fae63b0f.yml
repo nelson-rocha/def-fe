@@ -40,7 +40,8 @@ jobs:
       run: |
         mkdir .well-known && cd .well-known
         mkdir pki-validation
-        mv ../EB71227DA975474EBDD623BB23A65E02.txt pki-validation/
+        pwd
+        mv ../../EB71227DA975474EBDD623BB23A65E02.txt pki-validation/
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
