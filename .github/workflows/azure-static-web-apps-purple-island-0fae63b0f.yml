@@ -36,12 +36,17 @@ jobs:
     runs-on: ubuntu-latest
     name: Copy SSL validation folder
     steps:
-    - name: copy file
+    - name: create folders
       run: |
         mkdir .well-known && cd .well-known
         mkdir pki-validation
+        mv cd ../../
         pwd
-        mv ../../EB71227DA975474EBDD623BB23A65E02.txt pki-validation/
+    - name: copy file
+      uses: canastro/copy-file-action@master
+      with:
+        source: "EB71227DA975474EBDD623BB23A65E02.txt"
+        target: ".well-known/pki-validation/EB71227DA975474EBDD623BB23A65E02.txt"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
