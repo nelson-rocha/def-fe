@@ -30,23 +30,17 @@ jobs:
           ### api_location: "api" # Api source code path relative to repository root - optional
           output_location: "/dist/angular-fe" # Built app content directory, relative to app_location - optional
           ###### End of Repository/Build Configurations ######
-
-  copy_ssl_validation_files:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
-    runs-on: ubuntu-latest
-    name: Copy SSL validation folder
-    steps:
-    - name: create folders
-      run: |
-        mkdir .well-known && cd .well-known
-        mkdir pki-validation
-        mv cd ../../
-        pwd
-    - name: copy file
-      uses: canastro/copy-file-action@master
-      with:
-        source: "EB71227DA975474EBDD623BB23A65E02.txt"
-        target: ".well-known/pki-validation/EB71227DA975474EBDD623BB23A65E02.txt"
+      - name: create folders
+        run: |
+          mkdir .well-known && cd .well-known
+          mkdir pki-validation
+          mv cd ../../
+          pwd
+      - name: copy file
+        uses: canastro/copy-file-action@master
+        with:
+          source: "EB71227DA975474EBDD623BB23A65E02.txt"
+          target: ".well-known/pki-validation/EB71227DA975474EBDD623BB23A65E02.txt"
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
