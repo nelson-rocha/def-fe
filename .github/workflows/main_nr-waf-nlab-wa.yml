@@ -35,8 +35,8 @@ jobs:
           name: node-app
           path: release.zip
 
-      - name: unzip artifact for deployment
-        run: unzip release.zip
+      - name: Unzip artifact for deployment
+        run: unzip -o release.zip
 
   deploy:
     runs-on: ubuntu-latest
