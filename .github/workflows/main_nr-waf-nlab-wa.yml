@@ -57,5 +57,5 @@ jobs:
         with:
           app-name: 'nr-waf-nlab-wa'
           slot-name: 'Production'
-          publish-profile: 'nlab.works'
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D5BABBAF421C4720B4A1BEC0B36B92E7 }}
           package: .
